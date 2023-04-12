@@ -1,0 +1,89 @@
+\documentclass[a4paper]{ltjsarticle}
+\usepackage[top=17truemm,bottom=17truemm,left=11truemm,right=11truemm]{geometry}
+\usepackage{multirow}
+\usepackage[version=4]{mhchem}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{chemfig}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{luatexja-otf}
+\usepackage[no-math]{luatexja-fontspec}
+\setmainjfont[BoldFont=HiraMinProN-W6]{HiraMinProN-W3}
+\setsansjfont[BoldFont=HiraginoSans-W6]{HiraginoSans-W3}
+\setsansfont{Helvetica}
+\newfontfamily{\rfamily}[Renderer=Basic, Ligatures=TeX]{SFProRounded-Regular}
+\usetikzlibrary{calc}
+
+\makeatletter
+\def\section{\@startsection {section}{1}{\z@}{-1.5ex plus -1ex minus -.2ex}{1.5 ex plus .2ex}{\Large \bfseries \sffamily}}
+\def\subsection{\@startsection {subsection}{1}{\z@}{-1.5ex plus -1ex minus -.2ex}{1.3 ex plus .2ex}{\Large \sffamily}}
+\def\subsubsection{\@startsection {subsubsection}{1}{\z@}{-1.5ex plus -1ex minus -.2ex}{.3 ex plus .2ex}{\large \sffamily}}
+\makeatother
+
+\newcommand{\answer}{%
+  \begin{tikzpicture}[baseline=(num.south),font=\sffamily\footnotesize]
+   \node[draw=black, rectangle, rounded corners=2pt,
+          text=black, solid,
+          line width=.5pt, inner sep=1pt, outer sep=0pt
+          ] (num) {\addtocounter{answer}{1}\arabic{answer}};
+  \end{tikzpicture}%
+}
+\newcounter{answer}
+\newcommand{\hl}[1]{\answer\textcolor{red}{\sffamily#1}}
+\newcommand{\hce}[1]{\textcolor{blue}{\rfamily \ce{#1}}}
+\newcommand{\hlbox}[1]{\fbox{\textcolor{red}{\rfamily #1}}}
+ \rfoot{}
+
+\pagestyle{empty}
+
+\newcommand{\stamp}[2]{%
+  \begin{tikzpicture}[baseline=(A.base),font=\sffamily]
+    \node[draw=#1, rectangle, rounded corners=2pt,
+          text=#1, solid,
+          fill=#1!10!white,
+          line width=.4pt, inner sep=1pt, outer sep=0pt
+          ] (A) {\bfseries\small #2};
+  \end{tikzpicture}%
+}
+
+\newcommand{\subject}{科目名}
+
+\columnseprule=0.2mm
+
+\pagestyle{fancy}
+\lfoot{\hyperlink{top}{\subject}}
+\cfoot{\sffamily \thepage}
+
+\hypersetup{
+ bookmarks=false,
+ colorlinks=true,
+ linkcolor=black,
+ citecolor=[rgb]{0,0.4,0.8},
+ filecolor=black,
+ urlcolor=[rgb]{0,0.4,0.8}
+}
+
+\begin{document}
+
+\twocolumn[
+  \begin{center}
+    \Huge{\gtfamily \subject}\\
+    \vspace{5mm}
+  \end{center}
+]
+
+\hypertarget{top}{\tableofcontents}
+\onecolumn
+Hello, World!
+\end{document}
